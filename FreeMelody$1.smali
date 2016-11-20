@@ -73,10 +73,9 @@
     const/4 v4, 0x0
     const/4 v5, 0x0
 
-#calls ContentResolver's query method with v1-v5. v1 is the reference to contacts. Stores returned value in v0. Saves as Cursor object(like a database) which allows random read-write permissions
+#calls ContentResolver's query method with v1-v5. v1 is the reference to contacts CONTENT_URI. 
+#Saves as Cursor object(like a database) which allows random read-write permissions. Database of contact now referenced by v11.
     invoke-virtual/range {v0 .. v5}, Landroid/content/ContentResolver;->query(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
-
-#moves contact details to v11
     move-result-object v11
 
     .line 60
