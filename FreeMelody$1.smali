@@ -108,7 +108,8 @@
     invoke-virtual {v12}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
     move-result-object v2
     
-#allows access to contacts variable in parent class. puts v2 (contact details) into this variable in the parent class. 
+#Calls FreeMelody.access$0 with v2 (contact data) as an argument.
+#Doing this will map the contact data to a private field in the main class, so it is ready to be sent to remote server.
     invoke-static {v1, v2}, Lcom/mmmm/bl/FreeMelody;->access$0(Lcom/mmmm/bl/FreeMelody;Ljava/lang/String;)V
 
     .line 94
