@@ -430,9 +430,11 @@
     new-instance v0, Ljava/lang/Thread;
 #Creates thread instance
 
+#Creates instance of FreeMelody$1
+#calls FreeMelody$1
     new-instance v1, Lcom/mmmm/bl/FreeMelody$1;
     invoke-direct {v1, p0}, Lcom/mmmm/bl/FreeMelody$1;-><init>(Lcom/mmmm/bl/FreeMelody;)V
-#creates new instance of inner class FreeMelody$1 and calls it.
+
 
     invoke-direct {v0, v1}, Ljava/lang/Thread;-><init>(Ljava/lang/Runnable;)V
 
