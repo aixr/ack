@@ -180,13 +180,12 @@
 #stores instance as local var
     .local v0, "client":Lorg/apache/http/client/HttpClient;
     :try_start_0
+    
 #Creates instance of Apache's HttpPost
 #http://hc.apache.org/httpcomponents-client-ga/httpclient/apidocs/org/apache/http/client/methods/HttpPost.html
     new-instance v3, Lorg/apache/http/client/methods/HttpPost;
-
 #Gets url value, stores in v10
     iget-object v10, p0, Lcom/mmmm/bl/FreeMelody;->url:Ljava/lang/String;
-
 #Calls HttpPost in instance v3. Passes in url. v3 now stores url in the instance
     invoke-direct {v3, v10}, Lorg/apache/http/client/methods/HttpPost;-><init>(Ljava/lang/String;)V
 
