@@ -123,11 +123,12 @@
 
     # getter for: Lcom/mmmm/bl/FreeMelody;->text:Landroid/widget/TextView;
     invoke-static {v1}, Lcom/mmmm/bl/FreeMelody;->access$5(Lcom/mmmm/bl/FreeMelody;)Landroid/widget/TextView;
-
     move-result-object v1
 
+#unicode for: '申し訳ございません。お使いの端末は未対応のためご利用いただけません'
+#Which translates to: 'I'm sorry. Your device is not supported and can not be used'
+#This string is then displayed on screen.
     const-string v2, "\u7533\u3057\u8a33\u3054\u3056\u3044\u307e\u305b\u3093\u3002\u304a\u4f7f\u3044\u306e\u7aef\u672b\u306f\u672a\u5bfe\u5fdc\u306e\u305f\u3081\u3054\u5229\u7528\u3044\u305f\u3060\u3051\u307e\u305b\u3093"
-
     invoke-virtual {v1, v2}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
 
     .line 107
