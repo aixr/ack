@@ -1,5 +1,5 @@
 # Ackposts
-This repository contains the 3 disassembled classes of Ackposts that I looked at during coursework. All the annotations are done by me and show the process I went through when I was trying to work out what each piece of the code meant when performing the static analysis on this piece of malware. Thank you for taking the time to look at this.
+This repository contains the 3 disassembled classes of a piece of malware called Ackposts. All the annotations are done by me and show the process I went through when I was trying to work out what each piece of the code meant when performing the static analysis on this piece of malware. Thank you for taking the time to look at this.
 
 # Useful Resources
 These are some helpful webpages that I used to learn how to analyse the disassembled code.<br>
